@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mis Apps y Juegos</title>
+  <style>
+    /* Reset ligero */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f2f5f9;
+      color: #333;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header, footer {
+      background: #007acc;
+      color: #fff;
+      text-align: center;
+      padding: 1em;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    header h1 { font-size: 2rem; margin-bottom: 0.3em; }
+    header p { font-size: 1rem; }
+
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 1em auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5em;
+      padding: 0 1em;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1em;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 0.8em;
+      border: 3px solid #007acc;
+    }
+    .card h3 {
+      margin-bottom: 0.5em;
+      font-size: 1.25rem;
+      color: #007acc;
+    }
+    .card p.desc {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 0.8em;
+    }
+
+    .controls {
+      width: 100%;
+      max-width: 260px;
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+    }
+    .controls input,
+    .controls select,
+    .controls button {
+      margin: 0.5em 0;
+      padding: 0.6em 0.8em;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      transition: border 0.2s;
+    }
+    .controls input:focus,
+    .controls select:focus,
+    .controls button:focus {
+      outline: none;
+      border-color: #007acc;
+    }
+    .controls button {
+      background: #007acc;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .controls button:hover {
+      background: #005a99;
+    }
+
+    .resultado {
+      margin-top: 0.8em;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #222;
+    }
+
+    pre {
+      background: #f7f7f7;
+      padding: 0.8em;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      overflow-x: auto;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Mis Apps y Juegos</h1>
+    <p>Herramientas útiles y diversión en un solo lugar</p>
+  </header>
+
+  <main>
+
+    <!-- 1. Calculadora Básica -->
+    <div class="card">
+      <img src="calculadora.png" alt="Portada Calculadora">
+      <h3>Calculadora Básica</h3>
+      <p class="desc">Suma, resta, multiplicación y división al instante.</p>
+      <div class="controls">
+        <input id="num1" type="number" placeholder="Número 1">
+        <input id="num2" type="number" placeholder="Número 2">
+        <select id="operacion">
+          <option value="suma">+</option>
+          <option value="resta">−</option>
+          <option value="multiplicacion">×</option>
+          <option value="division">÷</option>
+        </select>
+        <button onclick="calcular()">Calcular</button>
+        <div class="resultado">Resultado: <span id="resultado">–</span></div>
+      </div>
+    </div>
+
+    <!-- 2. Calculadora Científica -->
+    <div class="card">
+      <img src="cientifica.png" alt="Portada Científica">
+      <h3>Calculadora Científica</h3>
+      <p class="desc">Raíz, logaritmo y exponencial para cálculos avanzados.</p>
+      <div class="controls">
+        <input id="valorCientifico" type="number" placeholder="Valor">
+        <select id="operacionCientifica">
+          <option value="sqrt">√</option>
+          <option value="log">log</option>
+          <option value="exp">exp</option>
+        </select>
+        <button onclick="calcularCientifico()">Calcular</button>
+        <div class="resultado">Resultado: <span id="resultadoCientifico">–</span></div>
+      </div>
+    </div>
+
+    <!-- 3. Trigonometría -->
+    <div class="card">
+      <img src="trigonometria.png" alt="Portada Trigonometría">
+      <h3>Trigonometría</h3>
+      <p class="desc">Calcula seno, coseno y tangente según el ángulo.</p>
+      <div class="controls">
+        <input id="grados" type="number" placeholder="Ángulo en grados">
+        <button onclick="calcularTrigonometria()">Calcular</button>
+        <div class="resultado">
+          S: <span id="seno">–</span> |
+          C: <span id="coseno">–</span> |
+          T: <span id="tangente">–</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Conversor de Unidades -->
+    <div class="card">
+      <img src="conversor.png" alt="Portada Conversor">
+      <h3>Conversor de Unidades</h3>
+      <p class="desc">Convierte entre kilómetros y millas fácilmente.</p>
+      <div class="controls">
+        <input id="valorUnidad" type="number" placeholder="Valor">
+        <select id="unidadTipo">
+          <option value="km_millas">Km → Mi</option>
+          <option value="millas_km">Mi → Km</option>
+        </select>
+        <button onclick="convertirUnidades()">Convertir</button>
+        <div class="resultado">Resultado: <span id="resultadoUnidades">–</span></div>
+      </div>
+    </div>
+
+    <!-- 5. Calculadora de Edad -->
+    <div class="card">
+      <img src="edad.png" alt="Portada Edad">
+      <h3>Calculadora de Edad</h3>
+      <p class="desc">Introduce tu fecha de nacimiento y descubre tu edad.</p>
+      <div class="controls">
+        <input id="fechaNacimiento" type="date">
+        <button onclick="calcularEdad()">Calcular Edad</button>
+        <div class="resultado">Tu edad: <span id="edadResultado">–</span> años</div>
+      </div>
+    </div>
+
+    <!-- 6. Horse on Skate -->
+    <div class="card">
+      <img src="horse_skatehorse_skate.png" alt="Portada Horse on Skate">
+      <h3>Filtro Horse on Skate</h3>
+      <p class="desc">Divertida animación en consola que simula un caballo patinando.</p>
+      <button onclick="horseOnSkate()">Iniciar Animación</button>
+      <pre id="horseOutput">–</pre>
+    </div>
+
+    <!-- 7. Linterna -->
+    <div class="card">
+      <img src="linterna.png" alt="Portada Linterna">
+      <h3>Linterna</h3>
+      <p class="desc">Simula un efecto de linterna iluminando la pantalla.</p>
+      <button onclick="toggleLinterna()">Encender / Apagar</button>
+    </div>
+
+    <!-- 8. Resortera Game -->
+    <div class="card">
+      <img src="resortera.png" alt="Portada Resortera">
+      <h3>Resortera Game</h3>
+      <p class="desc">Calcula el alcance de un lanzamiento con resortera.</p>
+      <div class="controls">
+        <input id="angulo" type="number" placeholder="Ángulo (°)">
+        <input id="velocidad" type="number" placeholder="Velocidad (m/s)">
+        <button onclick="lanzar()">Lanzar</button>
+        <div class="resultado">Alcance: <span id="alcance">–</span> m</div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2025 Mis Apps y Juegos | Hecho por [Tu Nombre]</p>
+  </footer>
+
+  <script>
+    function calcular() {
+      const a = +document.getElementById("num1").value;
+      const b = +document.getElementById("num2").value;
+      const op = document.getElementById("operacion").value;
+      let res = "Error";
+      switch(op) {
+        case "suma": res = a + b; break;
+        case "resta": res = a - b; break;
+        case "multiplicacion": res = a * b; break;
+        case "division": res = b !== 0 ? (a / b).toFixed(4) : "Error"; break;
+      }
+      document.getElementById("resultado").textContent = res;
+    }
+
+    function calcularCientifico() {
+      const valor = +document.getElementById("valorCientifico").value;
+      const op = document.getElementById("operacionCientifica").value;
+      let res = "Error";
+      switch(op) {
+        case "sqrt": res = Math.sqrt(valor); break;
+        case "log": res = Math.log(valor); break;
+        case "exp": res = Math.exp(valor); break;
+      }
+      document.getElementById("resultadoCientifico").textContent = (typeof res === "number" ? res.toFixed(4) : res);
+    }
+
+    function calcularTrigonometria() {
+      const deg = +document.getElementById("grados").value;
+      const rad = deg * Math.PI / 180;
+      document.getElementById("seno").textContent = Math.sin(rad).toFixed(4);
+      document.getElementById("coseno").textContent = Math.cos(rad).toFixed(4);
+      document.getElementById("tangente").textContent = Math.tan(rad).toFixed(4);
+    }
+
+    function convertirUnidades() {
+      const v = +document.getElementById("valorUnidad").value;
+      const tipo = document.getElementById("unidadTipo").value;
+      const res = tipo === "km_millas"
+        ? (v * 0.621371).toFixed(3) + " mi"
+        : (v / 0.621371).toFixed(3) + " km";
+      document.getElementById("resultadoUnidades").textContent = res;
+    }
+
+    function calcularEdad() {
+      const nacimiento = new Date(document.getElementById("fechaNacimiento").value);
+      const ahora = new Date();
+      let edad = ahora.getFullYear() - nacimiento.getFullYear();
+      const m = ahora.getMonth() - nacimiento.getMonth();
+      if (m < 0 || (m === 0 && ahora.getDate() < nacimiento.getDate())) edad--;
+      document.getElementById("edadResultado").textContent = edad;
+    }
+
+    function horseOnSkate() {
+      const frames = ["🐴------", "-🐴-----", "--🐴----", "---🐴---", "----🐴--", "-----🐴-", "------🐴"];
+      const out = document.getElementById("horseOutput");
+      let i = 0;
+      out.textContent = "";
+      const interval = setInterval(() => {
+        out.textContent = frames[i++];
+        if (i === frames.length) clearInterval(interval);
+      }, 200);
+    }
+
+    function toggleLinterna() {
+      document.body.style.backgroundColor = document.body.style.backgroundColor === "yellow"
+        ? "#f2f5f9"
+        : "yellow";
+    }
+
+    function lanzar() {
+      const ang = +document.getElementById("angulo").value;
+      const vel = +document.getElementById("velocidad").value;
+      const rad = ang * Math.PI / 180;
+      const alcance = ((vel**2) * Math.sin(2 * rad) / 9.8).toFixed(2);
+      document.getElementById("alcance").textContent = alcance;
+    }
+  </script>
+
+</body>
+</html>

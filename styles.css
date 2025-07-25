@@ -1,0 +1,55 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+header {
+  background-color: #222;
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+main {
+  padding: 2rem 1rem;
+  max-width: 960px;
+  margin: auto;
+}
+
+h2 {
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.grid-container section {
+  margin-bottom: 3rem;
+}
+
+.card {
+  background: white;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+footer {
+  text-align: center;
+  background-color: #222;
+  color: white;
+  padding: 1rem;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+.img-cuadrada {
+  width: 200px;
+  height: 200px;
+  object-fit: cover; /* Mantiene proporción sin deformar */
+  border-radius: 8px; /* Opcional: esquinas redondeadas */
+  display: block;
+  margin: 0 auto; /* Centrado horizontal */
+}
